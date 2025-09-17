@@ -1,0 +1,17 @@
+pragma solidity ^0.8.20;
+
+contract Voting {
+    struct Proposal {
+        string description;
+        uint256 votes;
+    }
+    Proposal[] public proposals;
+
+    function createProposal(string calldata desc) external {
+        proposals.push(Proposal(desc, 0));
+    }
+
+    function vote(uint256 proposalId) external {
+        proposals[proposalId].votes++;
+    }
+}
